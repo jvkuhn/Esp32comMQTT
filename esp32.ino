@@ -28,6 +28,7 @@ bool sistema_ativo() {
   return true;
 }
 
+//Conexão da plataforma TagoIO com protocolo MQTT.
 EspMQTTClient client(
   "Wokwi-GUEST",
   "",
@@ -38,6 +39,7 @@ EspMQTTClient client(
   1883
 );
 
+//Envio e funcionamento de dados para os botões da plataforma TagoIO.
 void onConnectionEstablished() {
   Serial.println("Conectado");
 
@@ -156,17 +158,17 @@ void setup() {
   pinMode(led_vermelho, OUTPUT);
   pinMode(rele, OUTPUT);
   pinMode(botao, INPUT);
-  lcd.init(); // Inicialização do LCD
-  lcd.backlight(); // Ativar backlight
+  lcd.init();
+  lcd.backlight();
 }
 
 void loop() {
-  sistema_ligado();
-  controle_temperatura();
-  movimento_servo();
-  display_lcd();
-  leitura_sensor();
-  enviar_dados_iot();
+  sistema_ligado(); // Acionamento do LED para representar que está funcionando.
+  controle_temperatura(); // Controle de temperatura, caso caia a temperatura irá acender o LED vermelho.
+  movimento_servo(); // Função de acionamento do Servo motor com push button.
+  display_lcd(); // Função de funcionamento do display.
+  leitura_sensor(); // Função de leitura de temperatura e umidade do sensor DHT.
+  enviar_dados_iot(); // Função de envio de dados para a plataforma TagoIO.
   delay(2000);
 
   client.loop();
