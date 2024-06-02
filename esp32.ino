@@ -34,8 +34,8 @@ EspMQTTClient client(
   "",
   "mqtt.tago.io",
   "Default",
-  "d678e0cc-c16f-44ba-94ba-6731cfdb9682",
-  "espKuhn",
+  "token",
+  "Nome do Esp",
   1883
 );
 
